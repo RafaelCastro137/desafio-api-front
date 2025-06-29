@@ -1,5 +1,5 @@
 # Desafio API - Frontend Angular
-<img src="src/assets/demo.gif" alt="Demonstração do Sistema" width="600">  
+<img src="src/assets/demo.png" alt="Demonstração do Sistema" width="600">  
 
 Aplicação desenvolvida como parte de um desafio técnico Full Stack. Este projeto consiste em uma interface frontend construída com Angular para gerenciar usuários, realizando operações de cadastro, edição, listagem e exclusão. A aplicação consome uma API REST desenvolvida com Spring Boot.
 
