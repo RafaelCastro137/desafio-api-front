@@ -1,27 +1,54 @@
-# ApiFront
+# Desafio API - Frontend Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.5.
+Aplicação desenvolvida como parte de um desafio técnico Full Stack. Este projeto consiste em uma interface frontend construída com Angular para gerenciar usuários, realizando operações de cadastro, edição, listagem e exclusão. A aplicação consome uma API REST desenvolvida com Spring Boot.
 
-## Development server
+## 🔧 Tecnologias Utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular 17
+- TypeScript
+- HTML5 & SCSS
+- Bootstrap
+- RxJS (observables para requisições HTTP)
+- Testes com Jasmine e Karma
 
-## Code scaffolding
+## 🎯 Funcionalidades
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- ✅ Listagem de usuários em uma tabela.
+- ✅ Cadastro de novos usuários com validação de campos obrigatórios.
+- ✅ Confirmação de senha no formulário de cadastro.
+- ✅ Edição de usuários existentes.
+- ✅ Exclusão com confirmação via `window.confirm`.
+- ✅ Validações reativas (ex: campos obrigatórios, e-mail válido).
+- ✅ Mensagens de sucesso e erro conforme retorno da API.
+- ✅ Testes unitários de componentes.
 
-## Build
+## 🔄 Integração com API
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Esta aplicação consome a API disponibilizada no repositório:  
+➡️ [`desafio-api-back`](https://github.com/RafaelCastro137/back-angular-spring)
 
-## Running unit tests
+A comunicação é feita via `HttpClient` com métodos como `get`, `post`, `put` e `delete` de acordo com o endpoint.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## ▶️ Como executar
 
-## Running end-to-end tests
+### Pré-requisitos
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+- Node.js (v18 ou superior)
+- Angular CLI (`npm install -g @angular/cli`)
+- Git
 
-## Further help
+### Passos para rodar o projeto
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```bash
+# Clone o repositório
+git clone https://github.com/RafaelCastro137/desafio-api-front.git
+cd desafio-api-front
+
+# Instale as dependências
+npm install
+
+# Execute o servidor de desenvolvimento
+ng serve
+
+# Acesse a aplicação
+http://localhost:4200
