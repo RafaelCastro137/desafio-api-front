@@ -26,7 +26,7 @@ Aplicação desenvolvida como parte de um desafio técnico Full Stack. Este proj
 ## 🔄 Integração com API
 
 Esta aplicação consome a API disponibilizada no repositório:  
-➡️ [`desafio-api-back`](https://github.com/RafaelCastro137/back-angular-spring)
+➡️ [`desafio-api-back`](https://github.com/RafaelCastro137/desafio-api-back)
 
 A comunicação é feita via `HttpClient` com métodos como `get`, `post`, `put` e `delete` de acordo com o endpoint.
 
