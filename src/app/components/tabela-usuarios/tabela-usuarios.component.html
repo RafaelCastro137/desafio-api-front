@@ -1,0 +1,41 @@
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios; index as i">
+                <td>{{ usuario.nome}}</td>
+                <td>{{ usuario.email }}</td>
+                <td>
+                    <button class="btn btn-primary me-2" (click)="aoClicarEditar(usuario)">
+                      <i class="bi bi-pencil-fill"></i>
+                    </button>
+                  
+                    <button class="btn btn-danger" (click)="confirmarExclusao(usuario, false)">
+                      <i class="bi bi-trash-fill"></i>
+                    </button>
+                  </td>
+                    <p-dialog header="Excluir usuário" [modal]="true" [(visible)]="mostrarModal" [style]="{ width: '40rem' }">
+                        <span class="p-text-secondary flex block mb-4">Deseja realmente excluir usuário "{{ usuario.nome }}" ?</span>
+                        <div class="flex justify-end gap-2">
+                            <p-button label="Cancelar" severity="secondary" (click)="mostrarModal = false" />
+                            <p-button label="Sim, excluir" severity="danger" (click)="confirmarExclusao(usuario, true)" />
+                        </div>
+                    </p-dialog>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="tabela" *ngIf="usuarios.length === 0">
+    Não há usuários cadastrados. Clique em "<a
+    href="javascript:void(0);"
+    (click)="aoClicarCadastrar('cadastrar-usuarios')"
+    >Cadastrar usuários</a>".
+</div>
+

@@ -1,0 +1,22 @@
+<div *ngIf="errorCadastrar" class="alert alert-danger" role="alert">
+    {{ mensagemErro }}
+  </div>
+<form>
+    <div>
+        <img src="assets/logo-fd.png">
+        <h2 class="titulo">Cadastrar usuário</h2>
+        <input (change)="aoAlterarFormulario()" type="text" placeholder="Nome" class="form-control" name="nome" [(ngModel)]="usuario.nome">
+        <input (change)="aoAlterarFormulario()" type="email" placeholder="Email" class="form-control" name="email" [(ngModel)]="usuario.email">
+        <input (change)="aoAlterarFormulario()" type="password" placeholder="Senha" class="form-control" name="Senha" [(ngModel)]="usuario.senha">
+        <input (change)="aoAlterarFormulario()" type="password" placeholder="Confirmar senha" class="form-control" name="confirmarSenha"
+            [(ngModel)]="usuario.confirmarSenha" />
+    </div>
+    <div *ngIf="!isEditar">
+        <input type="button" value="Voltar" class="btn btn-secondary" (click)="aoClicarVoltar()">
+        <input type="button" value="Cadastrar" [disabled]="habilitarBotao" class="btn btn-primary" (click)="aoClicarCadastrar()">
+    </div>
+    <div *ngIf="isEditar">
+        <input type="button" value="Cancelar" class="btn btn-danger" (click)="aoClicarCancelar()">
+        <input type="button" value="Salvar" class="btn btn-success" [disabled]="habilitarBotao" (click)="aoClicarEditar()">
+    </div>
+</form>
