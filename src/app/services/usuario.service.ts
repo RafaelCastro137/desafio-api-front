@@ -28,8 +28,8 @@ export class UsuarioService {
     return this.http.put<IUsuario>(this.url, obj);
   }
 
-  remover(codigo: number): Observable<void> {
-    return this.http.delete<void>(this.url + '/' + codigo);
+  remover(codigo: number): Observable<null> {
+    return this.http.delete<null>(this.url + '/' + codigo);
   }
 
   salvarUsuarioSelecionado(obj: IUsuario){

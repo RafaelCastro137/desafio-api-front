@@ -50,7 +50,7 @@ export class TabelaUsuariosComponent implements OnInit {
       }
   }
 
-    aoClicarExcluir(usuario: IUsuario){
+    aoClicarExcluir(usuario: IUsuario): void{
         this.service.remover(usuario.id).subscribe(() => {
           const posicao = this.usuarios.findIndex(obj => obj.id === usuario.id);
           this.usuarios.splice(posicao, 1);

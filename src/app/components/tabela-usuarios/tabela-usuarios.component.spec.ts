@@ -23,7 +23,7 @@ describe('TabelaUsuariosComponent', () => {
     
     service.listarUsuarios.and.returnValue(of([{} as IUsuario]));
     service.salvarUsuarioSelecionado.and.returnValue();
-    service.remover.and.returnValue(of());
+    service.remover.and.returnValue(of(null));
 
     router = jasmine.createSpyObj('Router', [
       'navigate'
@@ -99,7 +99,7 @@ describe('TabelaUsuariosComponent', () => {
     component.usuarios = [usuario];
 
     component.aoClicarExcluir(usuario);
-    expect(component.usuarios[0].id).toBe(1);
+    expect(component.usuarios[0].id).toBeUndefined();
     expect(service.remover).toHaveBeenCalled();
   }); 
 });
