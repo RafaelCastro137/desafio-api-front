@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { of, throwError } from 'rxjs';
 import { IUsuario } from 'src/app/shared/model/usuario.interface';
 import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
 
 describe('FormularioUsuarioComponent', () => {
   let component: FormularioUsuarioComponent;
@@ -123,6 +124,25 @@ describe('FormularioUsuarioComponent', () => {
     expect(service.cadastrar).toHaveBeenCalled();
   });
 
+  it('aoClicarCadastrar não deve cadastrar e deve emitir erro', () => {
+    const erroSimulado = new HttpErrorResponse({
+      error: {
+        errors: [{ defaultMessage: 'Erro ao editar' }]
+      },
+      status: 400,
+      statusText: 'Bad Request'
+    });
+    
+    service.cadastrar.and.callFake(() => throwError(() => erroSimulado));
+    let usuario = { nome: ''} as IUsuario;
+    fixture = TestBed.createComponent(FormularioUsuarioComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    component.usuario = usuario;
+    component.aoClicarCadastrar();
+    expect(service.cadastrar).toHaveBeenCalled();
+  });
+
   it('aoClicarEditar deve editar o usuario no else', () => {
     let usuario = { confirmarSenha: ''} as IUsuario;
     fixture = TestBed.createComponent(FormularioUsuarioComponent);
@@ -134,6 +154,25 @@ describe('FormularioUsuarioComponent', () => {
   });
 
   it('aoClicarEditar deve editar o usuario', () => {
+    let usuario = { nome: ''} as IUsuario;
+    fixture = TestBed.createComponent(FormularioUsuarioComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    component.usuario = usuario;
+    component.aoClicarEditar();
+    expect(component.usuario).toBe(usuario);
+  });  
+
+  it('aoClicarEditar não deve editar o usuario e debe emitir erro', () => {
+    const erroSimulado = new HttpErrorResponse({
+      error: {
+        errors: [{ defaultMessage: 'Erro ao editar' }]
+      },
+      status: 400,
+      statusText: 'Bad Request'
+    });
+    
+    service.editar.and.callFake(() => throwError(() => erroSimulado));
     let usuario = { nome: ''} as IUsuario;
     fixture = TestBed.createComponent(FormularioUsuarioComponent);
     component = fixture.componentInstance;

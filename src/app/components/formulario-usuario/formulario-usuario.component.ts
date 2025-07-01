@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -83,7 +84,7 @@ export class FormularioUsuarioComponent implements OnInit {
           this.router.navigate(['/']);
           alert('Cliente cadastrado com sucesso!');
         },
-        error: (err: any) => {
+        error: (err: HttpErrorResponse) => {
           this.errorCadastrar = true;
           this.mensagemErro = err.error.errors[0].defaultMessage;
         }
@@ -118,7 +119,7 @@ export class FormularioUsuarioComponent implements OnInit {
               this.router.navigate([''])
             alert('Cliente editado com sucesso!')
             },
-            error: (err: any) => {
+            error: (err: HttpErrorResponse) => {
               this.errorCadastrar = true;
               this.mensagemErro = err.error.errors[0].defaultMessage;
             }
